@@ -11,20 +11,13 @@ class CountDownApp extends StatefulWidget {
 
 class _CountDownAppState extends State<CountDownApp> {
   int _counter = 10;
-  // Controller for the input field
   final TextEditingController _controller = TextEditingController();
 
-  // Timer for countdown
   Timer? _timer;
 
-  // The initial value (can be set from input)
   int _initial = 10;
 
   void _startCountDown() {
-    // If a timer is already running, do nothing
-    if (_timer != null && _timer!.isActive) return;
-
-    // If counter is zero, reset to initial
     if (_counter <= 0) {
       _counter = _initial;
     }
@@ -35,20 +28,26 @@ class _CountDownAppState extends State<CountDownApp> {
           _counter--;
         });
       } else {
-        // stop timer when reaching zero
         t.cancel();
         _timer = null;
       }
     });
   }
 
-  void _pauseCountDown() {
-    _timer?.cancel();
-    _timer = null;
+  void _togglePause() {
+    setState(() {
+      if (_timer != null && _timer!.isActive) {
+        _timer?.cancel();
+        _timer = null;
+      } else {
+        _startCountDown();
+      }
+    });
   }
 
   void _resetCounter() {
-    _pauseCountDown();
+    _timer?.cancel();
+    _timer = null;
     setState(() {
       _counter = _initial;
     });
@@ -86,7 +85,7 @@ class _CountDownAppState extends State<CountDownApp> {
       appBar: AppBar(
         title: Text("Bộ đếm thời gian"),
         centerTitle: true,
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.blue,
       ),
       body: myBody(),
     );
@@ -132,6 +131,8 @@ class _CountDownAppState extends State<CountDownApp> {
                     ),
                   ),
                 ),
+                SizedBox(width: 8),
+                ElevatedButton(onPressed: _applyInput, child: Text('Áp dụng')),
               ],
             ),
           ),
@@ -148,8 +149,13 @@ class _CountDownAppState extends State<CountDownApp> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              ElevatedButton(onPressed: _startCountDown, child: Text('Start')),
-              SizedBox(width: 12),
+              ElevatedButton(
+                onPressed: _counter == 0 ? null : _togglePause,
+                child: Text(
+                  _timer != null && _timer!.isActive ? 'Pause' : 'Start',
+                ),
+              ),
+              SizedBox(width: 8),
               ElevatedButton(onPressed: _resetCounter, child: Text('Reset')),
             ],
           ),

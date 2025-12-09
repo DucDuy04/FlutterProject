@@ -16,10 +16,10 @@ class ListPlaceEasy extends StatelessWidget {
       child: Column(
         children: [
           header(),
-          SizedBox(height: 10),
+          // SizedBox(height: 5),
           titleSection(),
           search(),
-          SizedBox(height: 10),
+          // SizedBox(height: 5),
           titlePlace(),
           Expanded(child: placeList()),
         ],
@@ -39,7 +39,7 @@ class ListPlaceEasy extends StatelessWidget {
 
   Widget titleSection() {
     return Container(
-      margin: EdgeInsets.only(top: 20, bottom: 20),
+      margin: EdgeInsets.only(top: 10, bottom: 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [

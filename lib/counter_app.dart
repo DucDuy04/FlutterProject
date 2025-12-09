@@ -41,25 +41,32 @@ class _CounterAppState extends State<CounterApp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Ứng dụng đếm số"),
-        centerTitle: true,
-        backgroundColor: Colors.green,
+    return Theme(
+      data: Theme.of(context).copyWith(
+        splashColor: Colors.transparent, //loại bỏ hiệu ứng splash
+        highlightColor: Colors.transparent, //loại bỏ hiệu ứng nhấn nút
       ),
-      body: myBody(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Ứng dụng đếm số"),
+          centerTitle: true,
+          backgroundColor: Colors.blue,
+        ),
+        body: myBody(),
+      ),
     );
   }
 
   // Widget myBody() {
   Widget myBody() {
-    return Column(children: [block1()]);
+    return block1();
   }
 
   Widget block1() {
     return Container(
       decoration: BoxDecoration(color: Colors.white),
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text("Giá trị hiện tại"),
           Text(

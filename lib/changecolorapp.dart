@@ -48,24 +48,33 @@ class _ChangeColorAppState extends State<ChangeColorApp> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Change Color App"),
-        backgroundColor: Colors.green,
+    return Theme(
+      data: Theme.of(context).copyWith(
+        splashColor: Colors.transparent, //loại bỏ hiệu ứng splash
+        highlightColor: Colors.transparent, //loại bỏ hiệu ứng nhấn nút
       ),
-      body: myBody(),
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text("Change Color App"),
+          backgroundColor: Colors.blue,
+        ),
+        body: myBody(),
+      ),
     );
   }
 
   Widget myBody() {
-    return Column(children: [Expanded(child: block2())]);
+    // return Column(children: [Expanded(child: block2())]);
+    return block2();
   }
 
   // Widget block1() {
   Widget block2() {
     return Container(
       decoration: BoxDecoration(color: bgColor),
+
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text("Màu hiện tại"),
           Text(bgColorName, style: TextStyle(fontSize: 30)),
