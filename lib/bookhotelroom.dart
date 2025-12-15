@@ -18,12 +18,7 @@ class BookHotelRoom extends StatelessWidget {
           clipBehavior: Clip.none,
           children: [
             _background(),
-            Positioned(
-              top: 30,
-              left: 16,
-              right: 16,
-              child: _appHeader(),
-            ),
+            Positioned(top: 30, left: 16, right: 16, child: _appHeader()),
           ],
         ),
         const SizedBox(height: 15),
@@ -36,7 +31,7 @@ class BookHotelRoom extends StatelessWidget {
             children: [
               _hotelItem(
                 hotelName: "Khách sạn Sunshine",
-                imageUrl: "https://picsum.photos/140/140?random=1",
+                imageUrl: "assets/images/a1.jpg",
                 rating: 4.5,
                 reviewCount: 120,
                 location: "Hà Nội",
@@ -47,7 +42,7 @@ class BookHotelRoom extends StatelessWidget {
               ),
               _hotelItem(
                 hotelName: "Khách sạn Moonlight",
-                imageUrl: "https://picsum.photos/140/140?random=2",
+                imageUrl: "assets/images/a2.jpg",
                 rating: 4.0,
                 reviewCount: 85,
                 location: "Hồ Chí Minh",
@@ -58,7 +53,7 @@ class BookHotelRoom extends StatelessWidget {
               ),
               _hotelItem(
                 hotelName: "Khách sạn Ocean View",
-                imageUrl: "https://picsum.photos/140/140?random=3",
+                imageUrl: "assets/images/a3.jpg",
                 rating: 4.8,
                 reviewCount: 200,
                 location: "Đà Nẵng",
@@ -75,10 +70,7 @@ class BookHotelRoom extends StatelessWidget {
   }
 
   Widget _background() {
-    return Container(
-      height: 60,
-      color: Colors.blue[900],
-    );
+    return Container(height: 60, color: Colors.blue[900]);
   }
 
   Widget _appHeader() {
@@ -90,10 +82,7 @@ class BookHotelRoom extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
           decoration: BoxDecoration(
             color: Colors.white,
-            border: Border.all(
-              color: Colors.orange,
-              width: 1,
-            ),
+            border: Border.all(color: Colors.orange, width: 1),
             borderRadius: BorderRadius.circular(8.0),
           ),
           child: const Row(
@@ -103,10 +92,7 @@ class BookHotelRoom extends StatelessWidget {
               SizedBox(width: 8),
               Text(
                 'Xung quanh vị trí hiện tại  23 thg 10 - 24 thg 10',
-                style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 12,
-                ),
+                style: TextStyle(color: Colors.black, fontSize: 12),
               ),
             ],
           ),
@@ -219,7 +205,7 @@ class BookHotelRoom extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(8),
-          child: Image.network(
+          child: Image.asset(
             imageUrl,
             width: 140,
             height: 140,
@@ -339,10 +325,7 @@ class BookHotelRoom extends StatelessWidget {
         Expanded(
           child: Text(
             "Xuất sắc · $reviewCount đánh giá",
-            style: const TextStyle(
-              fontSize: 11,
-              color: Colors.black87,
-            ),
+            style: const TextStyle(fontSize: 11, color: Colors.black87),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -354,19 +337,12 @@ class BookHotelRoom extends StatelessWidget {
   Widget _buildLocation(String location, String distance) {
     return Row(
       children: [
-        Icon(
-          Icons.location_on_outlined,
-          size: 13,
-          color: Colors.grey[600],
-        ),
+        Icon(Icons.location_on_outlined, size: 13, color: Colors.grey[600]),
         const SizedBox(width: 2),
         Expanded(
           child: Text(
             "$location · Cách bạn $distance",
-            style: const TextStyle(
-              fontSize: 11,
-              color: Colors.black54,
-            ),
+            style: const TextStyle(fontSize: 11, color: Colors.black54),
             maxLines: 1,
             overflow: TextOverflow.ellipsis,
           ),
@@ -389,10 +365,7 @@ class BookHotelRoom extends StatelessWidget {
         ),
         Text(
           "Đã bao gồm thuế và phí",
-          style: TextStyle(
-            fontSize: 10,
-            color: Colors.grey[600],
-          ),
+          style: TextStyle(fontSize: 10, color: Colors.grey[600]),
         ),
       ],
     );
@@ -401,11 +374,7 @@ class BookHotelRoom extends StatelessWidget {
   Widget _buildFavoriteIcon() {
     return const Padding(
       padding: EdgeInsets.only(left: 4),
-      child: Icon(
-        Icons.favorite_border,
-        color: Colors.black87,
-        size: 22,
-      ),
+      child: Icon(Icons.favorite_border, color: Colors.black87, size: 22),
     );
   }
 }

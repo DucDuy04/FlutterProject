@@ -132,9 +132,24 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(color: Colors.blue),
                 child: Align(
                   alignment: Alignment.bottomLeft,
-                  child: Text(
-                    'Lê Đức Duy:22T1020585',
-                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CircleAvatar(
+                        radius: 40,
+                        child: Icon(
+                          Icons.person,
+                          size: 50,
+                          color: Color.fromARGB(255, 24, 107, 176),
+                        ),
+                      ),
+                      SizedBox(height: 10),
+                      Text(
+                        'Lê Đức Duy - 22T1020585',
+                        style: TextStyle(color: Colors.white, fontSize: 15),
+                      ),
+                    ],
                   ),
                 ),
               ),
